@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manga Reader</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <script src="/static/js/scripts.js" defer></script>
+</head>
+<body>
+    <div id="container">
+        <div id="pdf-viewer"></div>
+        <div id="controls">
+            <div id="folder-title">
+                <span id="folder-name">Manga Folder</span>
+                <button id="hide-panel">></button>
+            </div>
+        
+            <select id="chapter-select"></select>
+        
+            <div id="nav-buttons">
+                <button id="prev-chapter">
+                    <img src="/static/images/light_prev.png" alt="Previous">
+                </button>
+                <button id="choose-folder">Choose Manga Folder</button>
+                <button id="next-chapter">
+                    <img src="/static/images/light_next.png" alt="Next">
+                </button>
+            </div>
+
+            <!-- Slider Day/Night toggle -->
+            <div id="toggle-container">
+                <label for="toggle-mode" id="toggle-label">Day/Night</label>
+                <label class="switch">
+                    <input type="checkbox" id="toggle-mode">
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+        
+        <button id="show-panel" class="hidden"><</button>
+    </div>
+</body>
+</html>

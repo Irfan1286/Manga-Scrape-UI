@@ -1,0 +1,326 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    overflow: hidden; /* Remove extra scrollbar */
+    background-color: #f0f0f0; /* Set a background for the entire body to avoid white space */
+}
+
+#container {
+    display: flex;
+    height: 100vh;
+    position: relative;
+}
+
+#controls.hidden {
+    transform: translateX(100%);
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+#folder-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+#folder-name {
+    width: 100%; 
+    text-align: left;
+    word-wrap: break-word; /* Enables wrapping of long words */
+    overflow: hidden; /* Ensures text doesn’t overflow its container */
+    font-weight: bold; /* Makes the text bold */
+    text-transform: capitalize; /* Capitalizes the first letter */
+}
+
+#pdf-viewer {
+    flex: 1;
+    background-color: #f0f0f0;
+    overflow: auto;
+    transition: flex 0.3s ease;
+}
+
+#controls {
+    width: 20%;
+    background-color: #ffffff; /* Default white background for light mode */
+    color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+#controls.hidden {
+    transform: translateX(100%);
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+#show-panel {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border-radius: 50%;
+    border: none;
+    background-color: #555;
+    color: white;
+    cursor: pointer;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+#show-panel.visible {
+    display: flex; /* Show only when visible */
+}
+
+#controls button, #controls select {
+    margin: 10px 0;
+    padding: 10px;
+    width: 80%;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+}
+
+#controls select {
+    padding: 5px;
+}
+
+#controls img {
+    width: 20px;
+    height: 20px;
+}
+
+#chapter-select {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+#nav-buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 10px;
+}
+
+#choose-folder {
+    flex: 0.95; /* Adjust as needed */
+    margin: 0 5%;
+    border-radius: 10px;
+}
+
+#nav-buttons button {
+    width: 40px;
+    height: 40px;
+    margin: 0;
+    padding: 0;
+    border-radius: 10px;
+}
+
+#choose-folder {
+    width: 80%;
+    border-radius: 10px;
+}
+
+#show-panel.hidden {
+    display: block;
+}
+
+/* Light mode styles (default) */
+body {
+    background-color: #f0f0f0;
+}
+
+#controls {
+    background-color: #ffffff; /* White background for the panel in light mode */
+    color: black;
+}
+
+#folder-name {
+    color: grey; /* Title color in light mode */
+}
+
+#controls button, 
+#controls select, 
+#show-panel {
+    background-color: #f0f0f0; /* Light grey background for buttons in light mode */
+    color: black; /* Dark text for light mode */
+}
+
+#show-panel {
+    background-color: #f0f0f0; /* Light grey background for the hover button in light mode */
+}
+
+/* Dark mode styles */
+body.dark-mode {
+    background-color: #f0f0f0; /* Keep the body background light in dark mode */
+}
+
+body.dark-mode #controls {
+    background-color: #474747; /* Grey background for the panel in dark mode */
+    color: white;
+}
+
+body.dark-mode #folder-name {
+    color: white; /* White text for title in dark mode */
+}
+
+body.dark-mode #controls button, 
+body.dark-mode #controls select, 
+body.dark-mode #show-panel {
+    background-color: #003366; /* Cute dark blue color for buttons */
+    color: white; /* White text for buttons */
+}
+
+body.dark-mode #show-panel {
+    background-color: #003366; /* Dark blue background for the hover button in dark mode */
+}
+
+#toggle-mode {
+    width: 80%;
+    border-radius: 10px;
+    display: flex; /* Ensure it uses flexbox for content alignment */
+    align-items: center; /* Center the image vertically */
+    justify-content: center; /* Center the image horizontally */
+    overflow: hidden; /* Hide any overflow from the image */
+    background-color: #ffffff; /* Default background */
+}
+
+#toggle-mode img {
+    width: 100%; /* Make the image take the full width of the button */
+    height: auto; /* Keep aspect ratio */
+    object-fit: cover; /* Ensure the image covers the button area */
+}
+
+/* Toggle Container */
+#toggle-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    width: 80%;
+    border-top: 2px solid #333; /* Default bold line color */
+    padding-top: 10px; /* Space between line and slider */
+}
+
+/* Day/Night label text */
+#toggle-label {
+    font-size: 16px;
+    font-weight: bold; /* Make the label text bold */
+    margin-right: 10px;
+    color: #333; /* Default for light mode */
+}
+
+/* Slider Button */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 14px;
+    width: 14px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #2196F3;
+}
+
+input:checked + .slider:before {
+    transform: translateX(18px);
+}
+
+/* Dark Mode Adjustments */
+body.dark-mode #toggle-label {
+    color: white; /* Change the label text color in dark mode */
+}
+
+body.dark-mode .slider {
+    background-color: #1E3A8A; /* Dark blue background for dark mode */
+}
+
+body.dark-mode .slider:before {
+    background-color: white;
+}
+
+body.dark-mode #toggle-container {
+    border-top-color: white; /* Bold line color changes to white in dark mode */
+}
+
+/* Buttons in dark mode */
+body.dark-mode #prev-chapter img {
+    content: url('/static/images/dark_prev.png'); /* Change to dark mode image */
+}
+
+body.dark-mode #next-chapter img {
+    content: url('/static/images/dark_next.png'); /* Change to dark mode image */
+}
+
+/* Buttons in light mode */
+#prev-chapter img {
+    content: url('/static/images/light_prev.png');
+}
+
+#next-chapter img {
+    content: url('/static/images/light_next.png');
+}
+
+/* Button hover pop-out effect */
+#controls button, #controls select, #nav-buttons button, #choose-folder, #toggle-mode {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+/* When hovered, the buttons will grow slightly and add a shadow */
+#controls button:hover, #controls select:hover, #nav-buttons button:hover, #choose-folder:hover, #toggle-mode:hover {
+    transform: scale(1.05); /* Slightly increase size */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* Add shadow */
+}
+
+/* Clicked button effect - background turns red for 150ms */
+button.clicked {
+    background-color: rgb(210, 0, 0) !important;
+}
