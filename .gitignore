@@ -1,3 +1,5 @@
-/a-returners-magic-should-be-special-manga
-/my-wife-is-from-a-thousand-years-ago
-/omniscient-readers-viewpoint
+# Ignore all folders
+*/
+
+# Except the "UI" folder
+!UI/
