@@ -19,8 +19,9 @@ def getChapters(manga_name, Ch_Start, Ch_End):
     # Set up the Edge WebDriver
     options = Options()
 
-    options.add_argument("--headless")  # Run in headless mode (no browser UI)
+    options.add_argument("--headless=old")  # Run in headless mode (no browser UI)
     options.add_argument("--disable-gpu")  # Disable GPU rendering for increased performance
+    options.add_argument("--log-level=3")  # Disable GPU rendering for increased performance
 
     service = EdgeService(EdgeChromiumDriverManager().install())
     driver = webdriver.Edge(service=service, options=options)
